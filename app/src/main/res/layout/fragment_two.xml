@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bwf.tuanche.ManiFragment.fragmentone.TwoFragment">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_vertical"
+    android:text="热门品牌"
+    android:textSize="18sp"
+    android:layout_marginLeft="10dp"
+    android:textColor="@color/balck"
+    android:textStyle="bold"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhui"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_pinpai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/color_dadada"/>
+
+</LinearLayout>

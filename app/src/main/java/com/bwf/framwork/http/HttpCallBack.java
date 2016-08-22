@@ -1,8 +1,11 @@
 package com.bwf.framwork.http;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
+import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.StringUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -14,7 +17,7 @@ import okhttp3.Call;
  * Created by Lizhangfeng on 2016/8/16 0016.
  * Description: http回调
  */
-public abstract class HttpCallBack<T extends BaseBean> extends StringCallback {
+public abstract class HttpCallBack<T> extends StringCallback {
 
     private Class<T> tClass;
 
@@ -31,25 +34,30 @@ public abstract class HttpCallBack<T extends BaseBean> extends StringCallback {
     @Override
     public void onResponse(String response, int id) {
 
-        if (StringUtils.isNotEmpty(response)){
+        if (StringUtils.isNotEmpty(response)) {
 
+            Log.e("result","服务器返回结果: " + response);
 
-            try{
+            try {
 
                 BaseBean baseBean = JSON.parseObject(response, BaseBean.class);
 
-                if ("10000".equals(baseBean.code)){
-                    onSuccess(JSON.parseObject(response,tClass));
-                }else {
+                if ("10000".equals(baseBean.code)) {
+
+                    if (StringUtils.isNotEmpty(baseBean.result))
+                        onSuccess(JSON.parseObject(baseBean.result, tClass));
+                    else
+                        onFail("result is empty");
+
+                } else {
                     onFail(baseBean.msg);
                 }
-            }catch (JSONException e){
+            } catch (JSONException e) {
                 onFail("解析异常");
             }
 
 
-
-        }else
+        } else
             onFail("服务器返回内容为空");
 
     }
