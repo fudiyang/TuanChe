@@ -1,10 +1,14 @@
 package com.bwf.framwork.http;
 
+
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.utils.StringUtils;
-import com.bwf.framwork.utils.ToastUtil;
+
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.ParameterizedType;
@@ -32,12 +36,8 @@ public abstract class HttpArrayCallBack<T> extends StringCallback {
 
     @Override
     public void onResponse(String response, int id) {
-
         if (StringUtils.isNotEmpty(response)){
-
-
             try{
-
                 BaseBean baseBean = JSON.parseObject(response, BaseBean.class);
                 if ("10000".equals(baseBean.code)){
                     onSuccess(JSON.parseArray(baseBean.result,tClass));
@@ -49,11 +49,9 @@ public abstract class HttpArrayCallBack<T> extends StringCallback {
                 onFail("解析异常");
             }
 
-
-
         }else
-            onFail("服务器返回内容为空");
 
+            onFail("服务器返回内容为空");
     }
 
     public abstract void onSuccess(List<T> result);

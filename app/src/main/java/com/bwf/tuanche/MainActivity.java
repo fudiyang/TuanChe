@@ -4,12 +4,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.method.HideReturnsTransformationMethod;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.utils.DrawableUtils;
 import com.bwf.framwork.utils.LogUtils;

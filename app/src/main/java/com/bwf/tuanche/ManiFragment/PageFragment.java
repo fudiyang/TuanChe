@@ -1,6 +1,7 @@
 package com.bwf.tuanche.ManiFragment;
 
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -9,6 +10,7 @@ import com.bwf.framwork.http.HttpArrayCallBack;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.image.ImageLoader;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.UrlUtils;
 import com.bwf.tuanche.ManiFragment.ShouEntity.FourEntity;
@@ -19,6 +21,7 @@ import com.bwf.tuanche.ManiFragment.fragmentone.FourFragment;
 import com.bwf.tuanche.ManiFragment.fragmentone.OneFragment;
 import com.bwf.tuanche.ManiFragment.fragmentone.ThreeFragment;
 import com.bwf.tuanche.ManiFragment.fragmentone.TwoFragment;
+import com.bwf.tuanche.MapActivity;
 import com.bwf.tuanche.MyApplication;
 import com.bwf.tuanche.R;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -69,9 +72,9 @@ public class PageFragment extends BaseFragment {
                 getPinpaiData();
                 getBaoxianData();
                 getChexingData();
-//        tv_dizhi.setText(cityName);
     }
     public void getData(){
+        setOnClick(R.id.tv_title_city_name);
         String Url= UrlUtils.One_URL;
         HttpHelper.getFregmentOne(Url, cityId, new HttpCallBack<OneResultBean>() {
 
@@ -95,7 +98,7 @@ public class PageFragment extends BaseFragment {
                 @Override
                 public void onSuccess(TwoRessultBean result) {
                     LogUtils.e("tag","TWO_URL:____________"+result.list);
-                        fre_two.setList(result.list);
+                        fre_two.setList(result.list,cityId);
                 }
 
                 @Override
@@ -113,7 +116,7 @@ public class PageFragment extends BaseFragment {
                 LogUtils.e("tag","THREE_URL:____________"+result);
                 if (result!=null)
                     ImageLoader.getInstance().disPlayImage(img_pei,result.header_banner.get(0).adImgUrl);
-                fre_three.setThreeResultBean(result);
+                fre_three.setThreeResultBean(result,cityId);
             }
             @Override
             public void onFail(String errMsg) {
@@ -128,7 +131,8 @@ public class PageFragment extends BaseFragment {
             public void onSuccess(List<FourEntity> result) {
                 if (result!=null){
                     LogUtils.e("tag","FourEntity_____________________________________:"+result);
-                    fre_four.setFourEntity(result);
+                    fre_four.setFourEntity(result,cityId);
+
                 }
             }
             @Override
@@ -143,6 +147,12 @@ public class PageFragment extends BaseFragment {
 
     @Override
     public void onClick(View view) {
-
+            switch (view.getId()){
+                case R.id.tv_title_city_name:
+                    Bundle bundle = new Bundle();
+                    bundle.putString("cityName",MyApplication.getMyApplication().getCityName());
+                    IntentUtils.openActivity(getContext(), MapActivity.class,bundle);
+                    break;
+            }
     }
 }

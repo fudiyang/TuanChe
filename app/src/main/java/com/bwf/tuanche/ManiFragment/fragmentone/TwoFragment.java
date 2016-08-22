@@ -2,6 +2,7 @@ package com.bwf.tuanche.ManiFragment.fragmentone;
 
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,25 +11,31 @@ import android.widget.GridView;
 
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.utils.DividerItemDecoration;
+import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.StringUtils;
+import com.bwf.tuanche.MainActivity;
 import com.bwf.tuanche.ManiFragment.Adapter.GridViewAdapter2;
 import com.bwf.tuanche.ManiFragment.ShouEntity.TwoEntity;
 import com.bwf.tuanche.ManiFragment.ShouEntity.TwoRessultBean;
+import com.bwf.tuanche.MyApplication;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.detailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TwoFragment extends BaseFragment{
+public class TwoFragment extends BaseFragment implements GridViewAdapter2.HotPinpaiCallBack{
     private RecyclerView rl_pinpai;
     private GridViewAdapter2 adapter2;
     private List<TwoEntity> list;
     private DividerItemDecoration dividerItemDecoration;
     private DividerItemDecoration dividerItemDecoration1;
+    private String cityId;
 
-    public void setList(List<TwoEntity> list) {
+    public void setList(List<TwoEntity> list,String cityId) {
         this.list = list;
+        this.cityId=cityId;
         list.add(new TwoEntity("更多","more"));
         adapter2.setList(list);
         adapter2.notifyDataSetChanged();
@@ -68,6 +75,14 @@ public class TwoFragment extends BaseFragment{
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void PinpaiOnItemClick(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("cityId",cityId);
+        bundle.putString("firmbrandId",list.get(position).id);
 
     }
 }

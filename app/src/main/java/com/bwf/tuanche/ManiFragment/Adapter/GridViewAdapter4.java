@@ -22,6 +22,11 @@ public class GridViewAdapter4 extends RecyclerView.Adapter<GridViewAdapter4.MyVi
 
     private Context context;
     private List<FourEntity> fourEntity;
+    private HotChexingCallBack hotChexingCallBack;
+
+    public void setHotChexingCallBack(HotChexingCallBack hotChexingCallBack) {
+        this.hotChexingCallBack = hotChexingCallBack;
+    }
 
     public void setFourEntity(List<FourEntity> fourEntity) {
         this.fourEntity = fourEntity;
@@ -44,15 +49,20 @@ public class GridViewAdapter4 extends RecyclerView.Adapter<GridViewAdapter4.MyVi
     }
 
     @Override
-    public void onBindViewHolder(MyViewHodler3 holder, int position) {
+    public void onBindViewHolder(MyViewHodler3 holder, final int position) {
         ImageLoader.getInstance().disPlayImage(holder.img_cx_chexing, fourEntity.get(position).logo);
-
-
         holder.tv_cx_pinpai.setText(fourEntity.get(position).styleName);
         String baoming = fourEntity.get(position).prefix+"<font color='red'>" + fourEntity.get(position).manNum + "</font>"+fourEntity.get(position).suffix;
         holder.tv_cx_baoming.setText(Html.fromHtml(baoming));
         holder.tv_cx_zhidaojia.setText(fourEntity.get(position).pricePrefix+fourEntity.get(position).price+fourEntity.get(position).priceSuffix);
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (hotChexingCallBack!=null){
+                    hotChexingCallBack.StyleOnItemClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -68,5 +78,10 @@ public class GridViewAdapter4 extends RecyclerView.Adapter<GridViewAdapter4.MyVi
         public MyViewHodler3(View itemView) {
             super(itemView);
         }
+    }
+
+
+    public interface  HotChexingCallBack{
+        void StyleOnItemClick(int position);
     }
 }

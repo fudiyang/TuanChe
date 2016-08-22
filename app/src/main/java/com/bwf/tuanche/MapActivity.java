@@ -3,6 +3,7 @@ package com.bwf.tuanche;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -28,6 +29,7 @@ public class MapActivity extends BaseActivity{
     private  String latitude;
     private String  city;
     private TextView tv_dingwei,tv_city;
+    private ImageView img_back;
     private MapOneFragment fre_mapone;
     private MapTwoFragment fre_maptwo;
     private String cityId;
@@ -46,13 +48,14 @@ public class MapActivity extends BaseActivity{
     public void initView() {
         tv_dingwei= (TextView) findViewById(R.id.tv_dingwei);
         tv_city= (TextView) findViewById(R.id.tv_city);
+        img_back= (ImageView) findViewById(R.id.img_back);
         fre_mapone= (MapOneFragment) getSupportFragmentManager().findFragmentById(R.id.fre_mapone);
         fre_maptwo= (MapTwoFragment) getSupportFragmentManager().findFragmentById(R.id.fre_maptwo);
     }
 
     @Override
     public void initData() {
-        setOnClick(R.id.tv_dingwei);
+        setOnClick(R.id.tv_dingwei,R.id.img_back);
         //声明LocationClient类
         mLocationClient=new LocationClient(getApplicationContext());
         //注册监听函数
@@ -136,6 +139,10 @@ public class MapActivity extends BaseActivity{
                 bundle.putString("cityId",cityId);
                 MyApplication.getMyApplication().setCityName(city.toUpperCase().trim().substring(0,2));
                 IntentUtils.openActivity(MapActivity.this,MainActivity.class,bundle);
+                this.finish();
+                break;
+            case R.id.img_back:
+                IntentUtils.openActivity(MapActivity.this,MainActivity.class);
                 this.finish();
                 break;
         }

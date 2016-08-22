@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true"
     android:background="@android:color/black"
     tools:context="com.bwf.tuanche.MainActivity">
+
     <FrameLayout
         android:id="@+id/fre_content"
         android:layout_width="match_parent"
@@ -23,9 +24,9 @@
             android:id="@+id/tv_page"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_height="match_parent"
             android:drawableTop="@mipmap/nav_icon_home_sel"
             android:textColor="@color/red"
             android:gravity="center"
@@ -37,9 +38,9 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:gravity="center"
             android:drawableTop="@mipmap/nav_icon_order_nor"
             android:textColor="@color/grey"
+            android:gravity="center"
             android:text="订单"/>
         <ImageView
             android:id="@+id/img_cheap"
@@ -51,7 +52,7 @@
             android:id="@+id/tv_service"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:drawableTop="@mipmap/nav_icon_server_nor"
             android:textColor="@color/grey"
             android:layout_marginTop="10dp"
@@ -62,15 +63,12 @@
             android:id="@+id/tv_main"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:drawableTop="@mipmap/nav_icon_my_nor"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:gravity="center"
             android:textColor="@color/grey"
+            android:gravity="center"
             android:text="我的"/>
     </LinearLayout>
-
-
-
 </LinearLayout>

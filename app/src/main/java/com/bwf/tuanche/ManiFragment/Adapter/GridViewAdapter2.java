@@ -21,6 +21,11 @@ public class GridViewAdapter2 extends RecyclerView.Adapter<GridViewAdapter2.MyVi
     private Context context;
 
     private  List<TwoEntity> list;
+    private HotPinpaiCallBack hotPinpaiCallBack;
+
+    public void setHotPinpaiCallBack(HotPinpaiCallBack hotPinpaiCallBack) {
+        this.hotPinpaiCallBack = hotPinpaiCallBack;
+    }
 
     public GridViewAdapter2(Context context) {
         this.context = context;
@@ -41,7 +46,7 @@ public class GridViewAdapter2 extends RecyclerView.Adapter<GridViewAdapter2.MyVi
     }
 
     @Override
-    public void onBindViewHolder(MyViewHodler2 holder, int position) {
+    public void onBindViewHolder(MyViewHodler2 holder, final int position) {
 
 
             if(list.get(position).logo.equals("more")){
@@ -52,6 +57,14 @@ public class GridViewAdapter2 extends RecyclerView.Adapter<GridViewAdapter2.MyVi
             holder.tv_pinpai.setText(list.get(position).name);
             String baoming = "已有<font color='red'>" + list.get(position).baseNum + "</font>人报名";
             holder.tv_baoming.setText(Html.fromHtml(baoming));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (hotPinpaiCallBack!=null){
+                    hotPinpaiCallBack.PinpaiOnItemClick(position);
+                }
+            }
+        });
 
     }
 
@@ -67,5 +80,8 @@ public class GridViewAdapter2 extends RecyclerView.Adapter<GridViewAdapter2.MyVi
         public MyViewHodler2(View itemView) {
             super(itemView);
         }
+    }
+    public  interface  HotPinpaiCallBack{
+        void PinpaiOnItemClick(int position);
     }
 }
