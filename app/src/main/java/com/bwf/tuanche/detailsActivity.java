@@ -24,13 +24,10 @@ public class detailsActivity extends BaseActivity {
     private Fragment_2 tuache_fragment2;
     private Fragmetn_3 tuache_fragment3;
     private Fragment_6 tuache_fragment6;
-<<<<<<< HEAD
     private String cityId;
-=======
-
     private Result result;
 
->>>>>>> houyao
+
     private String brandId,styleId;
     @Override
     public int getContentViewId() {
@@ -41,10 +38,9 @@ public class detailsActivity extends BaseActivity {
     public void beforeInitView() {
         brandId=getIntent().getStringExtra("brandId");
         styleId=getIntent().getStringExtra("styleId");
-<<<<<<< HEAD
+
         cityId=getIntent().getStringExtra("cityId");
-=======
->>>>>>> houyao
+
     }
 
     @Override
@@ -68,11 +64,8 @@ public class detailsActivity extends BaseActivity {
      */
     public void getData(){
         String url = UrlUtils.TUANCHE_KEY;
-<<<<<<< HEAD
+
         HttpHelper.getDetail(url,styleId,brandId,cityId,new HttpCallBack<Result>() {
-=======
-        HttpHelper.getDetail(url,styleId,brandId,"156",new HttpCallBack<Result>() {
->>>>>>> houyao
             @Override
             public void onSuccess(Result result) {
                 if(result !=null){
@@ -92,11 +85,7 @@ public class detailsActivity extends BaseActivity {
     }
     public void newgetData(){
         String url = UrlUtils.TUANCHE_KEY;
-<<<<<<< HEAD
         HttpHelper.getDetail(url,styleId,brandId,cityId,new HttpCallBack<Result>() {
-=======
-        HttpHelper.getDetail(url,styleId,brandId,"156",new HttpCallBack<Result>() {
->>>>>>> houyao
             @Override
             public void onSuccess(Result result){
                 dismissSoftKeyboard(detailsActivity.this);

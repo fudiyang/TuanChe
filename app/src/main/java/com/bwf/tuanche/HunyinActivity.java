@@ -30,13 +30,10 @@ public class HunyinActivity extends BaseActivity{
     private ListView hun_listview;
     private ImageView img_back1;
     private HyAdapter adapter;
-<<<<<<< HEAD
+
     private HyRusert hyRusert;
     private String cityId;
 
-
-=======
->>>>>>> houyao
 
     @Override
     public int getContentViewId() {
@@ -59,19 +56,15 @@ public class HunyinActivity extends BaseActivity{
         hun_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-<<<<<<< HEAD
+
                hyRusert = (HyRusert) adapterView.getItemAtPosition(i);
-=======
                 HyRusert hyRusert = (HyRusert) adapterView.getItemAtPosition(i);
->>>>>>> houyao
+
                 if(hyRusert !=null){
                     Bundle bundle=new Bundle();
                     bundle.putString("brandId",hyRusert.brandId);
                     bundle.putString("styleId",hyRusert.id);
-<<<<<<< HEAD
                     bundle.putString("cityId",cityId);
-=======
->>>>>>> houyao
                     IntentUtils.openActivity(HunyinActivity.this,detailsActivity.class,bundle);
                 }
             }
