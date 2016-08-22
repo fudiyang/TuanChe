@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bwf.tuanche.detailsActivity">
+<com.bwf.tuanche.View.TuancheDetailTitleBar
+    android:id="@+id/titleBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</com.bwf.tuanche.View.TuancheDetailTitleBar>
+<ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/titleBar">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <fragment
+            android:id="@+id/tuache_fragment1"
+            android:name="com.bwf.tuanche.fragment.Fragment_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/tuache_fragment2"
+            android:name="com.bwf.tuanche.fragment.Fragment_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/tuache_fragment3"
+            android:name="com.bwf.tuanche.fragment.Fragmetn_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/tuache_fragment5"
+            android:name="com.bwf.tuanche.fragment.Fragment_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/tuache_fragment6"
+            android:name="com.bwf.tuanche.fragment.Fragment_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <fragment
+            android:id="@+id/tuache_fragment7"
+            android:name="com.bwf.tuanche.fragment.Fragment_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>
+</RelativeLayout>

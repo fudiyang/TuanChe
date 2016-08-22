@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:id="@+id/tv_titleimg_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableLeft="@mipmap/icon_back"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="婚姻座驾"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_titleimg_fenxiang"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:drawableRight="@mipmap/icon_fenxiang"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        />
+
+</LinearLayout>

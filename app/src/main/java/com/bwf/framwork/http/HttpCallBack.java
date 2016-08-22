@@ -39,7 +39,7 @@ public abstract class HttpCallBack<T extends BaseBean> extends StringCallback {
                 BaseBean baseBean = JSON.parseObject(response, BaseBean.class);
 
                 if ("10000".equals(baseBean.code)){
-                    onSuccess(JSON.parseObject(response,tClass));
+                    onSuccess(JSON.parseObject(baseBean.result,tClass));
                 }else {
                     onFail(baseBean.msg);
                 }
