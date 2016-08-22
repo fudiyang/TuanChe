@@ -23,12 +23,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         setContentView(getContentViewId());
 
-        //如果存在actionBar，就隐藏
+       // 如果存在actionBar，就隐藏
         if (getSupportActionBar() != null)
             getSupportActionBar().hide();
         AppManager.getInstance().addActivity(this);
 
-        setTranslucentStatus();
+       // setTranslucentStatus();
 
         beforeInitView();
         initView();

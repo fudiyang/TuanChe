@@ -8,17 +8,47 @@ import com.zhy.http.okhttp.OkHttpUtils;
  * Description:
  */
 public class HttpHelper {
-
-
-    public static void getDetail(String url,String pageNo,String pageSize,HttpCallBack callBack){
+    //汽车详情
+    public static void getDetail(String url,String styleId,String brandId,String cityId,HttpCallBack callBack){
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams("pageNo", pageNo)
-                .addParams("pageSize", pageSize)
+                .addParams("styleId",styleId)
+                .addParams("brandId",brandId)
+                .addParams("cityId",cityId)
                 .build()
                 .execute(callBack);
     }
 
+    public static void gettwoDetail(String url,String firmbrandId,String cityId,HttpCallBack callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("firmbrandId",firmbrandId)
+                .addParams("cityId",cityId)
+                .build()
+                .execute(callBack);
+    }
+//更多评价
+    public static void getPJDetail(String url,String count,String offset,String cityId,String brandId,HttpCallBack callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("count",count)
+                .addParams("offset",offset)
+                .addParams("cityId",cityId)
+                .addParams("brandId",brandId)
+                .build()
+                .execute(callBack);
+    }
+
+    //婚姻座驾
+    public static void getHYDetail(String url,HttpCallBack callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .build()
+                .execute(callBack);
+    }
 
 }

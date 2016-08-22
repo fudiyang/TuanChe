@@ -13,4 +13,6 @@ public class Constants {
     //数据库所有的表
     public static String[] TABLES = new String[]{};
 
+    public static final int  PANG_NUM=10;
+
 }

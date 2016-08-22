@@ -18,26 +18,22 @@ public class ReccleViewAdapter extends BaseListAdpter<String, ReccleViewAdapter.
 
     @Override
     public int getResourceId() {
-        return R.layout.item_test;
+        return R.layout.activity_details;
     }
 
     @Override
     public MyViewHodler onCreateViewHolder(ViewGroup parent) {
         MyViewHodler viewHodler = new MyViewHodler();
-        viewHodler.tv_test = findViewByIdNoCast(R.id.tv_test);
+
         return viewHodler;
     }
 
     @Override
     public void onBindViewHolder(MyViewHodler holder, String userBean, int position) {
 
-        holder.tv_test.setText(userBean);
-
     }
 
     public class MyViewHodler extends BaseListAdpter.ViewHolder {
-
-        public TextView tv_test;
 
     }
 
