@@ -18,6 +18,15 @@ import okhttp3.OkHttpClient;
 public class MyApplication extends Application {
 
     private static MyApplication myApplication;
+    private String cityName;
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     @Override
     public void onCreate() {

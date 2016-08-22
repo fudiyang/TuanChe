@@ -5,15 +5,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseListAdpter;
-import com.bwf.framwork.base.ReccleViewAdapter;
 import com.bwf.framwork.image.ImageLoader;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.tuanche.R;
 import com.bwf.tuanche.entiy.hunying.HyRusert;
-import com.bwf.tuanche.entiy.hunying.Rusert;
 import com.facebook.drawee.view.SimpleDraweeView;
-
-import java.util.List;
 
 /**
  * Created by admin on 2016/8/19.

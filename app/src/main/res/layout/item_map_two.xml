@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/color_dadada"
+    android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_zimu"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="A"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/balck"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_chengshi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="鞍山"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/balck"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

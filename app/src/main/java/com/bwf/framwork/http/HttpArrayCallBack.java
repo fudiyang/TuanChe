@@ -1,11 +1,14 @@
 package com.bwf.framwork.http;
 
+
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
+import com.bwf.framwork.utils.StringUtils;
+
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.ParameterizedType;
@@ -33,33 +36,22 @@ public abstract class HttpArrayCallBack<T> extends StringCallback {
 
     @Override
     public void onResponse(String response, int id) {
-
-        if (!TextUtils.isEmpty(response)) {
-
-            Log.e("tag", "服务器返回结果: " + response);
-
-            try {
-
+        if (StringUtils.isNotEmpty(response)){
+            try{
                 BaseBean baseBean = JSON.parseObject(response, BaseBean.class);
-
-                if ("10000".equals(baseBean.code)) {
-
-                    if (!TextUtils.isEmpty(baseBean.result))
-                        onSuccess(JSON.parseArray(baseBean.result, tClass));
-                    else
-                        onFail("result is empty");
-
-                } else {
+                if ("10000".equals(baseBean.code)){
+                    onSuccess(JSON.parseArray(baseBean.result,tClass));
+                }else {
                     onFail(baseBean.msg);
                 }
-            } catch (JSONException e) {
+            }catch (JSONException e){
+                e.printStackTrace();
                 onFail("解析异常");
             }
 
+        }else
 
-        } else
             onFail("服务器返回内容为空");
-
     }
 
     public abstract void onSuccess(List<T> result);
