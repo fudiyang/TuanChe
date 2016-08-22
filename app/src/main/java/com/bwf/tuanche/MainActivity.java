@@ -44,7 +44,8 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
     @Override
     public void beforeInitView() {
         handler=new Handler(this);
-        cityId=getIntent().getStringExtra("cityId");
+      //  cityId=getIntent().getStringExtra("cityId");
+        cityId=cityId==null?"156":cityId;
         LogUtils.e("_________________________________"+cityName);
     }
 

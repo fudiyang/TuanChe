@@ -73,7 +73,7 @@ public class PageFragment extends BaseFragment {
     }
     public void getData(){
         String Url= UrlUtils.One_URL;
-        HttpHelper.getFregmentOne(Url, "156", new HttpCallBack<OneResultBean>() {
+        HttpHelper.getFregmentOne(Url, cityId, new HttpCallBack<OneResultBean>() {
 
             @Override
             public void onSuccess(OneResultBean result) {
@@ -90,7 +90,7 @@ public class PageFragment extends BaseFragment {
     }
     public void getPinpaiData(){
             String Url=UrlUtils.TWO_URL;
-            HttpHelper.getFregmentTwo(Url, "2", "156", new HttpCallBack<TwoRessultBean>(){
+            HttpHelper.getFregmentTwo(Url, "2", cityId, new HttpCallBack<TwoRessultBean>(){
 
                 @Override
                 public void onSuccess(TwoRessultBean result) {
@@ -106,7 +106,7 @@ public class PageFragment extends BaseFragment {
     }
     public void getBaoxianData(){
         String Url=UrlUtils.THREE_URL;
-        HttpHelper.getFregmentThree(Url,"156", new HttpCallBack<ThreeResultBean>(){
+        HttpHelper.getFregmentThree(Url,cityId, new HttpCallBack<ThreeResultBean>(){
 
             @Override
             public void onSuccess(ThreeResultBean result) {
@@ -123,7 +123,7 @@ public class PageFragment extends BaseFragment {
     }
     public void getChexingData(){
         String Url=UrlUtils.FOUR_URL;
-        HttpHelper.getFregmentFour(Url,"20","10","156", new HttpArrayCallBack<FourEntity>() {
+        HttpHelper.getFregmentFour(Url,"20","10",cityId, new HttpArrayCallBack<FourEntity>() {
             @Override
             public void onSuccess(List<FourEntity> result) {
                 if (result!=null){

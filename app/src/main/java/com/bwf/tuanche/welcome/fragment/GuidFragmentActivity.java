@@ -7,6 +7,7 @@ import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.MainActivity;
+import com.bwf.tuanche.MapActivity;
 import com.bwf.tuanche.R;
 
 public class GuidFragmentActivity extends BaseFragment {
@@ -57,7 +58,7 @@ public class GuidFragmentActivity extends BaseFragment {
                 SharePrefreceHelper.getInstence(getActivity()).setIsFirst(false);
                 first.setBackgroundResource(R.mipmap.start_btn_click);
                 first.setImageResource(R.mipmap.start_btn_click);
-                IntentUtils.openActivity(getContext(), MainActivity.class);
+                IntentUtils.openActivity(getContext(), MapActivity.class);
                 getActivity().finish();
                 break;
         }

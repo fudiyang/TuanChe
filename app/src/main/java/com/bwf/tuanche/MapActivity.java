@@ -26,6 +26,7 @@ public class MapActivity extends BaseActivity{
     public BDLocationListener myListener=new MyLocationListener();
     private  String longitude;
     private  String latitude;
+    private String  city;
     private TextView tv_dingwei,tv_city;
     private MapOneFragment fre_mapone;
     private MapTwoFragment fre_maptwo;
@@ -86,17 +87,19 @@ public class MapActivity extends BaseActivity{
             if (location != null) {
                 longitude = "" + location.getLongitude();//经度
                 latitude = "" + location.getLatitude();//纬度
+                city =   location.getCity();//城市
                 String errCode = "" + location.getLocType();//网络定位 161代表成功
                 Log.e("tag", "经度: " + longitude);
                 Log.e("tag", "纬度: " + latitude);
                 Log.e("tag", "errCode: " + errCode);
             }
             String Url= UrlUtils.MAP;
-            HttpHelper.getMap(Url, "104.147981", "30.606906", new HttpCallBack<MapEntity>() {
+            HttpHelper.getMap(Url, longitude, latitude, new HttpCallBack<MapEntity>() {
 
                 @Override
                 public void onSuccess(MapEntity result) {
                     LogUtils.e("rdasdas:______________________"+result);
+                    if(result==null) return;
                     tv_dingwei.setText(result.name);
                     cityId=result.id;
                 }
@@ -131,7 +134,9 @@ public class MapActivity extends BaseActivity{
             case R.id.tv_dingwei:
                 Bundle bundle = new Bundle();
                 bundle.putString("cityId",cityId);
+                MyApplication.getMyApplication().setCityName(city.toUpperCase().trim().substring(0,2));
                 IntentUtils.openActivity(MapActivity.this,MainActivity.class,bundle);
+                this.finish();
                 break;
         }
 

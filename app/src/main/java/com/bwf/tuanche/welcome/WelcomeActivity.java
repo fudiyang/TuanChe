@@ -8,6 +8,7 @@ import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.MainActivity;
+import com.bwf.tuanche.MapActivity;
 import com.bwf.tuanche.R;
 
 public class WelcomeActivity extends BaseActivity implements Handler.Callback {
@@ -45,11 +46,11 @@ public class WelcomeActivity extends BaseActivity implements Handler.Callback {
     public boolean handleMessage(Message message) {
         switch (message.what) {
             case 1:
-//                if (SharePrefreceHelper.getInstence(WelcomeActivity.this).isFirst()) {
+                if (SharePrefreceHelper.getInstence(WelcomeActivity.this).isFirst()) {
                     IntentUtils.openActivity(this, GuidActivity.class);
-//                } else {
-//                    IntentUtils.openActivity(this, MainActivity.class);
-//                }
+                } else {
+                    IntentUtils.openActivity(this, MapActivity.class);
+                }
                 finish();
                 break;
         }

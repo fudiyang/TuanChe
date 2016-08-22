@@ -78,6 +78,7 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
     bundle.putString("cityId",cityEntities.get(position).id);
     MyApplication.getMyApplication().setCityName(cityEntities.get(position).name);
     IntentUtils.openActivity(getActivity(), MainActivity.class,bundle);
+    getActivity().finish();
 
   }
 }

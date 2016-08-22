@@ -78,6 +78,7 @@ public class MapOneFragment extends BaseFragment implements MapAdapterOne.MapCal
         bundle.putString("cityId",hotCityEntities.get(position).id);
         MyApplication.getMyApplication().setCityName(hotCityEntities.get(position).name);
         IntentUtils.openActivity(getActivity(), MainActivity.class,bundle);
+        getActivity().finish();
 
     }
 }
