@@ -41,7 +41,6 @@ public class WelcomeActivity extends BaseActivity implements Handler.Callback {
     public void onClick(View view) {
 
     }
-
     @Override
     public boolean handleMessage(Message message) {
         switch (message.what) {
@@ -56,7 +55,6 @@ public class WelcomeActivity extends BaseActivity implements Handler.Callback {
         }
         return false;
     }
-
     @Override
     protected void onDestroy() {
         handler.removeCallbacksAndMessages(null);

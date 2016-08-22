@@ -2,11 +2,17 @@ package com.bwf.tuanche.View;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bwf.framwork.utils.IntentUtils;
+import com.bwf.framwork.utils.ToastUtil;
+import com.bwf.tuanche.HunyinActivity;
+import com.bwf.tuanche.ManiFragment.PageFragment;
 import com.bwf.tuanche.R;
 
 /**
@@ -14,6 +20,7 @@ import com.bwf.tuanche.R;
  */
 public class HuanYingDetailTitleBar extends RelativeLayout {
     private TextView tv_titleimg_fenxiang;
+
     public HuanYingDetailTitleBar(Context context) {
         this(context,null);
     }
@@ -42,6 +49,6 @@ public class HuanYingDetailTitleBar extends RelativeLayout {
                 pop.showPopWindow(tv_titleimg_fenxiang);
             }
         });
-    }
 
+    }
 }

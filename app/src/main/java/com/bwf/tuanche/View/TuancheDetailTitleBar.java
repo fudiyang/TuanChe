@@ -13,7 +13,7 @@ import com.bwf.tuanche.R;
  * Created by admin on 2016/7/26.
  */
 public class TuancheDetailTitleBar extends RelativeLayout {
-    private TextView tv_title;
+    private TextView   tv_title;
     private TextView   tv_titleimg_fenxiang;
     public TuancheDetailTitleBar(Context context) {
         this(context,null);
