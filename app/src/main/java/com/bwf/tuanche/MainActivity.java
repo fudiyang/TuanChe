@@ -1,6 +1,4 @@
 package com.bwf.tuanche;
-
-
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -37,7 +35,6 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
     private FragmentManager fragmentManager;
     private String cityId,cityName;
     private Handler handler;
-
 
     @Override
     public int getContentViewId() {
