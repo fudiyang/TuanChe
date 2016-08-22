@@ -24,7 +24,13 @@ public class detailsActivity extends BaseActivity {
     private Fragment_2 tuache_fragment2;
     private Fragmetn_3 tuache_fragment3;
     private Fragment_6 tuache_fragment6;
+<<<<<<< HEAD
     private String cityId;
+=======
+
+    private Result result;
+
+>>>>>>> houyao
     private String brandId,styleId;
     @Override
     public int getContentViewId() {
@@ -35,11 +41,15 @@ public class detailsActivity extends BaseActivity {
     public void beforeInitView() {
         brandId=getIntent().getStringExtra("brandId");
         styleId=getIntent().getStringExtra("styleId");
+<<<<<<< HEAD
         cityId=getIntent().getStringExtra("cityId");
+=======
+>>>>>>> houyao
     }
 
     @Override
     public void initView(){
+        result=new Result();
         titleBar=findViewByIdNoCast(R.id.titleBar);
         tuache_fragment1= (Fragment_1) getSupportFragmentManager().findFragmentById(R.id.tuache_fragment1);
         tuache_fragment2= (Fragment_2) getSupportFragmentManager().findFragmentById(R.id.tuache_fragment2);
@@ -58,32 +68,40 @@ public class detailsActivity extends BaseActivity {
      */
     public void getData(){
         String url = UrlUtils.TUANCHE_KEY;
+<<<<<<< HEAD
         HttpHelper.getDetail(url,styleId,brandId,cityId,new HttpCallBack<Result>() {
+=======
+        HttpHelper.getDetail(url,styleId,brandId,"156",new HttpCallBack<Result>() {
+>>>>>>> houyao
             @Override
             public void onSuccess(Result result) {
-                dismissSoftKeyboard(detailsActivity.this);
-                titleBar.setTitle(result.styleName);
-                tuache_fragment1.setResultbean(result);
-                tuache_fragment2.setResult(result);
-                tuache_fragment6.setResult(result.comment);
-                dismissSoftKeyboard(detailsActivity.this);
+                if(result !=null){
+                    dismissSoftKeyboard(detailsActivity.this);
+                    titleBar.setTitle(result.styleName);
+                    tuache_fragment1.setResultbean(result);
+                    tuache_fragment2.setResult(result);
+                    tuache_fragment6.setResult(result.comment);
+                    dismissSoftKeyboard(detailsActivity.this);
+                }
             }
             @Override
             public void onFail(String errMsg) {
                 dismissSoftKeyboard(detailsActivity.this);
-                Log.i("hy","onFail---->"+errMsg);
             }
         });
     }
     public void newgetData(){
         String url = UrlUtils.TUANCHE_KEY;
+<<<<<<< HEAD
         HttpHelper.getDetail(url,styleId,brandId,cityId,new HttpCallBack<Result>() {
+=======
+        HttpHelper.getDetail(url,styleId,brandId,"156",new HttpCallBack<Result>() {
+>>>>>>> houyao
             @Override
             public void onSuccess(Result result){
                 dismissSoftKeyboard(detailsActivity.this);
                List<RootBean> list= JSON.parseArray(result.tcbzDesc,RootBean.class);
                tuache_fragment3.setRootBean(list);
-                Log.i("hy",result.toString());
             }
             @Override
             public void onFail(String errMsg) {
@@ -91,8 +109,6 @@ public class detailsActivity extends BaseActivity {
             }
         });
     }
-
-
 
     @Override
     public void onClick(View view) {

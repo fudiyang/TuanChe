@@ -16,7 +16,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
  */
 public class HyAdapter extends BaseListAdpter<HyRusert,HyAdapter.MViewHodler> {
 
-
     public HyAdapter(Context context) {
         super(context);
     }
@@ -42,6 +41,7 @@ public class HyAdapter extends BaseListAdpter<HyRusert,HyAdapter.MViewHodler> {
           holder.tv_100.setText(rusert.styleName);
           holder.tv_101.setText("指导价："+rusert.factoryPrice);
           holder.tv_102.setText(rusert.content);
+
           ImageLoader.getInstance().disPlayImage(holder.img_tupian,rusert.logo);
     }
 
@@ -49,4 +49,5 @@ public class HyAdapter extends BaseListAdpter<HyRusert,HyAdapter.MViewHodler> {
         private TextView tv_100, tv_101, tv_102;
         private SimpleDraweeView img_tupian;
     }
+
 }

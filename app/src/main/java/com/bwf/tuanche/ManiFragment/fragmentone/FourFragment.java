@@ -48,13 +48,11 @@ public class FourFragment extends BaseFragment implements GridViewAdapter4.HotCh
         dividerItemDecoration1=new DividerItemDecoration(getContext(),LinearLayoutManager.VERTICAL);
         dividerItemDecoration.setColor(Color.parseColor("#a8a8a8"));
         dividerItemDecoration1.setColor(Color.parseColor("#a8a8a8"));
-
     }
 
     @Override
     protected void initView(View rootView) {
         rl_chexing=findViewByIdNoCast(R.id.rl_chexing);
-
     }
 
     @Override
