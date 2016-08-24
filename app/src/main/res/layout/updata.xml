@@ -2,12 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/image_title"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="80dp"
-            android:src="@mipmap/upgrade_hint" />
+
     <RelativeLayout
         android:id="@+id/relative01"
         android:layout_width="300dp"
@@ -72,4 +67,10 @@
     </RelativeLayout>
 
 
+    <ImageView
+        android:id="@+id/image_title"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="80dp"
+        android:src="@mipmap/upgrade_hint" />
 </RelativeLayout>

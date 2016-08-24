@@ -53,7 +53,6 @@ public class SearchActivity extends BaseActivity {
     private EditText edit_search;
     private GridView gridView_search;
     private Button button_clean;
-    private String cityId = "156";
     private String brandName;
     private SearchAdapter searchAdapter;
     private HistoryAdapter historyAdapter;
@@ -64,6 +63,7 @@ public class SearchActivity extends BaseActivity {
     private UserBean userBean;
     private List<UserBean> userBeans;
     private CompareUserBean compareUserBean;
+    private String cityId,brandId;
 
     @Override
     public int getContentViewId() {
@@ -72,6 +72,7 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public void beforeInitView() {
+        cityId=getIntent().getStringExtra("cityId");
         searchAdapter = new SearchAdapter(this);
         historyAdapter=new HistoryAdapter(this);
         lists = new ArrayList<String>();
@@ -157,11 +158,12 @@ public class SearchActivity extends BaseActivity {
         gridView_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String firmbrandId="";
-                EdThridBean bean02 = (EdThridBean) searchAdapter.getItem(i);
-                firmbrandId=bean02.firmBrandId;
+//                String firmbrandId="";
+//                EdThridBean bean02 = (EdThridBean) searchAdapter.getItem(i);
+//                firmbrandId=bean02.firmBrandId;
                 Bundle bundle =new Bundle();
-                bundle.putString("firmbrandId",firmbrandId);
+                bundle.putString("cityId",cityId);
+                bundle.putString("brandId",brandId);
                 IntentUtils.openActivity(SearchActivity.this,DetailActivity.class, bundle);
 
             }
@@ -196,7 +198,7 @@ public class SearchActivity extends BaseActivity {
 
         gridView_search.setAdapter(searchAdapter);
         String url = UrlUtils.HOT_SEARCH;
-        HttpHelper.getHotSearch(url, "156", new HttpCallBackSER<SearchResultBean>() {
+        HttpHelper.getHotSearch(url, cityId, new HttpCallBackSER<SearchResultBean>() {
             @Override
             public void onSuccess(SearchResultBean resultBean) {
                 LogUtils.e("1111", resultBean.result.toString());
@@ -219,7 +221,7 @@ public class SearchActivity extends BaseActivity {
 
     public void getDataED() {    //汽车搜索
         String url = UrlUtils.SEARCH_CARSTYLE;
-        HttpHelper.getSearch(url, 0, "25", "156", new HttpArrayCallBack<EdSecondResult>() {
+        HttpHelper.getSearch(url, 0, "25", cityId, new HttpArrayCallBack<EdSecondResult>() {
             @Override
             public void onSuccess(List<EdSecondResult> resultBean) {
                 LogUtils.e("44444",resultBean.toString());
@@ -250,6 +252,7 @@ public class SearchActivity extends BaseActivity {
                     String brandId="30";
                     Bundle bundle = new Bundle();
                     bundle.putString("brandId", brandId);
+                    bundle.putString("cityId",cityId);
                     IntentUtils.openActivity(SearchActivity.this, DetailActivity.class, bundle);
 
                     //将ed框输入的内容添加进历史ListView

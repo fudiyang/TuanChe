@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.umeng.socialize.PlatformConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -17,12 +18,22 @@ import okhttp3.OkHttpClient;
 public class MyApplication extends Application {
 
     private static MyApplication myApplication;
+    private String cityName;
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
         myApplication = this;
-
+             //初始化QQ
+        PlatformConfig.setQQZone("1105532707", "10oC0MJmv1VZHnsX");
         //初始化facebook
         Fresco.initialize(this);
         //初始化okhttp

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/img_cx_chexing"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_dalibao"/>
+    <TextView
+        android:id="@+id/tv_cx_pinpai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="大众"
+        android:textColor="@color/balck"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/img_cx_chexing"/>
+    <TextView
+        android:id="@+id/tv_cx_baoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/baoming"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_cx_pinpai"/>
+    <TextView
+        android:id="@+id/tv_cx_zhidaojia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="指导价：6.98—10.88万"
+        android:textSize="14sp"
+        android:textColor="@color/balck"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_cx_baoming"/>
+
+</RelativeLayout>
