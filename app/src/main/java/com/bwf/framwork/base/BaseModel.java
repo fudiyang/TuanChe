@@ -27,10 +27,12 @@ public abstract class BaseModel implements BaseColumns {
      *
      * @return
      */
-    public String getCreateTableSql() {
+    public String getCreateTableSql() {//  创建表语句
         return getCreateTable(getTableName(), getParamsMap());
     }
 
+
+    // 建表
     public String getCreateTable(String tableName, Map<String, String> map) {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -91,6 +93,9 @@ public abstract class BaseModel implements BaseColumns {
         return dbHelper.getReadableDatabase().rawQuery(sql, null);
     }
 
+    public Cursor queryAll(){
+        return dbHelper.getReadableDatabase().query(getTableName(),null,null,null,null,null,null);
+    }
     /**
      * 清空表
      *
@@ -98,6 +103,13 @@ public abstract class BaseModel implements BaseColumns {
      */
     public void clear(String tableName) {
         dbHelper.getWritableDatabase().execSQL("delete from " + tableName);
+    }
+    /**
+     * 清空表
+     */
+
+    public void clear(){
+        dbHelper.getWritableDatabase().execSQL("delete from "+getTableName());
     }
 
     /**
