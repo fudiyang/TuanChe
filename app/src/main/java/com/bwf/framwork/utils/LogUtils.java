@@ -127,8 +127,9 @@ public class LogUtils {
      * error
      *
      * @param msg
+     * @param length
      */
-    public static void e(String msg) {
+    public static void e(String msg, int length) {
         if (isLogEnabled) {
             Log.e(defaultTag, getContent(getCurrentStackTraceElement()) + "--->" + msg);
         }

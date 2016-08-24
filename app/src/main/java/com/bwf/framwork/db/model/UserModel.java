@@ -6,7 +6,9 @@ import android.database.Cursor;
 import com.bwf.framwork.base.BaseModel;
 import com.bwf.framwork.bean.UserBean;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -16,14 +18,15 @@ import java.util.Map;
  */
 public class UserModel extends BaseModel {
 
-    public static final String TABLE_NAME = "userinfo";//表名
+    public static final String TABLE_NAME = "search_table";//表名
 
     private static Map<String, String> paramsMap = new HashMap<>();
 
     static {
         paramsMap.put(_ID, "integer primary key autoincrement");//
-        paramsMap.put("name", "TEXT NOT NULL");//姓名
-        paramsMap.put("userid", "TEXT NOT NULL");//
+        paramsMap.put("info", "TEXT NOT NULL");  //搜索的内容
+        paramsMap.put("dateTime", "TEXT NOT NULL");  //搜索的时间
+
     }
 
     /**
@@ -34,10 +37,29 @@ public class UserModel extends BaseModel {
         if (userBean == null)
             return;
         ContentValues values = new ContentValues();
-        values.put("userid", userBean.userId);
-        values.put("name", userBean.userName);
+        values.put("info", userBean.info);
+        values.put("dateTime", userBean.dateTime);
         insert(TABLE_NAME, values);
 
+    }
+    /**
+     * 查询所有用户
+     */
+    public List<UserBean> queryAllUsearBean() {
+
+        Cursor cursor = queryAll();
+        List<UserBean> userBeens = new ArrayList<>();
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                UserBean userBean = new UserBean();
+                userBean.info = cursor.getString(cursor.getColumnIndex("info"));
+                userBean.dateTime = cursor.getString(cursor.getColumnIndex("dateTime"));
+                userBeens.add(userBean);
+            }
+            cursor.close();
+        }
+
+        return userBeens;
     }
 
     /**
@@ -48,13 +70,13 @@ public class UserModel extends BaseModel {
      */
     public UserBean getUserBeanById(String id) {
         UserBean userBean = new UserBean();
-        String sql = "select * from userinfo where userid=" + id;
+//        String sql = "select * from userinfo where userid=" + id;
+        String sql = "select * from tab order by datetime desc";
         Cursor cursor = select(sql);
 
         if (cursor != null) {
             if (cursor.moveToNext()) {//找到userid为123的数据了
-                userBean.userName = cursor.getString(cursor.getColumnIndex("name"));
-                userBean.userId = cursor.getString(cursor.getColumnIndex("userid"));
+                userBean.info = cursor.getString(cursor.getColumnIndex("info"));
             }
         }
         return userBean;

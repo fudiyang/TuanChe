@@ -4,11 +4,25 @@ package com.bwf.framwork.http;
 import com.bwf.tuanche.xaingqing.entiy.remen.BrandIDBean;
 import com.zhy.http.okhttp.OkHttpUtils;
 
+import com.bwf.tuanche.VersionUpdate.UpdateResultBean;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+
 /**
  * Created by Lizhangfeng on 2016/7/13 0013.
  * Description:
  */
 public class HttpHelper {
+    public static void getDetailLSL(String url,String pageNo,String pageSize,HttpCallBackSER callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("pageNo",pageNo)
+                .addParams("pageSize",pageSize)
+                .build()
+                .execute(callBack);
+    }
     //汽车详情
     public static void getDetail(String url,String styleId,String brandId,String cityId,HttpCallBack callBack){
         OkHttpUtils
@@ -20,7 +34,6 @@ public class HttpHelper {
                 .build()
                 .execute(callBack);
     }
-
     public static void gettwoDetail(String url,String firmbrandId,String cityId,HttpCallBack callBack){
         OkHttpUtils
                 .post()
@@ -31,6 +44,7 @@ public class HttpHelper {
                 .execute(callBack);
     }
 //更多评价
+
     public static void getPJDetail(String url,String offset,String cityId,String brandId,HttpCallBack callBack){
         OkHttpUtils
                 .post()
@@ -50,14 +64,47 @@ public class HttpHelper {
                 .execute(callBack);
     }
     //婚姻座驾
-    public static void getHYDetail(String url,HttpCallBack callBack){
+    public static void getHYDetail(String url,HttpCallBack callBack) {
+                OkHttpUtils
+                 .post()
+                .url(url)
+                .build()
+                .execute(callBack);
+    }
+    /**
+     * 热门搜索
+     * @param url
+     * @param cityId
+     * @param callBack
+     */
+    public static void getHotSearch(String url, String cityId, StringCallback callBack){
+        OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("cityId", cityId)
+                .build()
+                .execute(callBack);
+    }
+
+    //品牌详情
+    public static void getSearch(String url,int type,String brandId, String cityId, StringCallback callBack){
+                OkHttpUtils
+                .post()
+                .url(url)
+                .addParams("type", ""+type)
+                .addParams("brandId", ""+brandId)
+                .addParams("cityId", cityId)
+                .build()
+                .execute(callBack);
+    }
+    //品牌详情
+    public static void getUpdate(String url, HttpCallBack<UpdateResultBean> callBack){
         OkHttpUtils
                 .post()
                 .url(url)
                 .build()
                 .execute(callBack);
     }
-
     //热门品牌
     public static void  getFregmentTwo(String url,String isBuy,String cityId,HttpCallBack callBack){
 

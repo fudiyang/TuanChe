@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="20dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/image_carstyle"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:src="@mipmap/default_special_3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/text_carstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="奔驰XXX系列"/>
+
+        <TextView
+            android:id="@+id/text_carprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="指导价格"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/text_man"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="20dp"
+            android:text="人数"/>
+    </LinearLayout>
+</LinearLayout>

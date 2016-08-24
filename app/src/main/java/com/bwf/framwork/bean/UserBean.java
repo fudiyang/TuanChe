@@ -3,23 +3,22 @@ package com.bwf.framwork.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.bwf.framwork.base.BaseBean;
 
 /**
  * Created by Lizhangfeng on 2016/8/8 0008.
  * Description: 用户bean
  */
-public class UserBean extends BaseBean implements Parcelable {
+public class UserBean implements Parcelable{
 
-    public String userId;
-    public String userName;
+    public String info;
+    public String dateTime;
 
     public UserBean() {
     }
 
-    public UserBean(String userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
+    public UserBean(String info, String dateTime) {
+        this.info = info;
+        this.dateTime = dateTime;
     }
 
 
@@ -30,16 +29,16 @@ public class UserBean extends BaseBean implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.userId);
-        dest.writeString(this.userName);
+        dest.writeString(this.info);
+        dest.writeString(this.dateTime);
     }
 
     protected UserBean(Parcel in) {
-        this.userId = in.readString();
-        this.userName = in.readString();
+        this.info = in.readString();
+        this.dateTime = in.readString();
     }
 
-    public static final Parcelable.Creator<UserBean> CREATOR = new Parcelable.Creator<UserBean>() {
+    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
         @Override
         public UserBean createFromParcel(Parcel source) {
             return new UserBean(source);
@@ -50,4 +49,7 @@ public class UserBean extends BaseBean implements Parcelable {
             return new UserBean[size];
         }
     };
+
+
+
 }

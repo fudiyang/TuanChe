@@ -3,6 +3,7 @@ package com.bwf.tuanche.ManiFragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bwf.framwork.base.BaseFragment;
@@ -24,6 +25,7 @@ import com.bwf.tuanche.ManiFragment.fragmentone.TwoFragment;
 import com.bwf.tuanche.MapActivity;
 import com.bwf.tuanche.MyApplication;
 import com.bwf.tuanche.R;
+import com.bwf.tuanche.Search.Activity.SearchActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -37,6 +39,7 @@ public class PageFragment extends BaseFragment {
     private SimpleDraweeView img_pei;
     private TextView tv_title_city_name;
     private String cityId;
+    private EditText ed_seach;
 
     public void setCityId(String cityId) {
         this.cityId = cityId;
@@ -57,7 +60,7 @@ public class PageFragment extends BaseFragment {
     protected void initView(View rootView) {
         img_pei=findViewByIdNoCast(R.id.img_pei);
         tv_title_city_name=findViewByIdNoCast(R.id.tv_title_city_name);
-
+        ed_seach=findViewByIdNoCast(R.id.ed_seach);
         tv_title_city_name.setText(MyApplication.getMyApplication().getCityName());
 
         fre_one= (OneFragment) getChildFragmentManager().findFragmentById(R.id.fre_one);
@@ -68,6 +71,7 @@ public class PageFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        setOnClick(R.id.ed_seach);
                 getData();
                 getPinpaiData();
                 getBaoxianData();
@@ -152,6 +156,11 @@ public class PageFragment extends BaseFragment {
                     Bundle bundle = new Bundle();
                     bundle.putString("cityName",MyApplication.getMyApplication().getCityName());
                     IntentUtils.openActivity(getContext(), MapActivity.class,bundle);
+                    break;
+                case R.id.ed_seach:
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("cityId",cityId);
+                    IntentUtils.openActivity(getContext(), SearchActivity.class,bundle1);
                     break;
             }
     }

@@ -101,7 +101,7 @@ public class MapActivity extends BaseActivity {
 
                 @Override
                 public void onSuccess(MapEntity result) {
-                    LogUtils.e("rdasdas:______________________"+result);
+//                   LogUtils.e("rdasdas:______________________"+result);
                     if(result==null) return;
                     tv_dingwei.setText(result.name);
                     cityId=result.id;
@@ -117,6 +117,10 @@ public class MapActivity extends BaseActivity {
         HttpHelper.getCity(Url, "4", new HttpCallBack<CityResultBean>() {
             @Override
             public void onSuccess(CityResultBean result) {
+
+
+//                LogUtils.e("dasasdf:____________________"+result);
+
                 fre_mapone.setHotCityEntities(result.hotCitys);
                 fre_maptwo.setCityEntities(result.openCitys);
             }
