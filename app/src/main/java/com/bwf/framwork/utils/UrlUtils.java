@@ -5,16 +5,15 @@ package com.bwf.framwork.utils;
  * Description:
  */
 public class UrlUtils {
-
     public static final String BASE_URL = "http://123.56.145.151:8080/TuanCheNetWork/";
-
    //汽车详情
     public static final String TUANCHE_KEY=BASE_URL+"bwf_TuanChe_BuyInfoServlet";
+  //热门汽车
+    public static final String TUANCHE_RENMEN=BASE_URL+"bwf_TuanChe_BrandCarStyleServlet";
    //更多评价
     public static final String  TUANCHE_PJ=BASE_URL+"bwf_TuanChe_BuyInfoEvaluateServlet";
     //婚姻座驾
     public static final String TUANCHE_HUNYIN=BASE_URL+"bwf_TuanChe_AdplistServlet";
-
     //买贵赔3倍
     public static final String One_URL = BASE_URL +"bwf_TuanChe_HomeServlet";
     //热门品牌

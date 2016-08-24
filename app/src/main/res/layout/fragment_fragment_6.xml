@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bwf.tuanche.fragment.Fragment_6">
+    tools:context=".xaingqing.fragment.Fragment_6">
 
     <LinearLayout
       android:layout_width="match_parent"

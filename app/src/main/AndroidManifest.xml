@@ -55,7 +55,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PjActivity" />
+        <activity android:name=".xaingqing.PjActivity" />
 
         <!-- QQ\QQZone -->
         <activity
@@ -80,8 +80,8 @@
             android:name="UMENG_APPKEY"
             android:value="57aac750e0f55a6e6c000ece" />
 
-        <activity android:name=".detailsActivity" />
-        <activity android:name=".HunyinActivity"></activity>
+        <activity android:name=".xaingqing.detailsActivity" />
+        <activity android:name=".xaingqing.HunyinActivity"></activity>
         <activity android:name=".MainActivity" />
         <!-- 百度定位SDK -->
         <service

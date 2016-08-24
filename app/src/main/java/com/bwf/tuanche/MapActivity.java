@@ -1,5 +1,6 @@
 package com.bwf.tuanche;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,8 +22,7 @@ import com.bwf.tuanche.ManiFragment.ShouEntity.MapEntity;
 import com.bwf.tuanche.ManiFragment.fragmentone.MapOneFragment;
 import com.bwf.tuanche.ManiFragment.fragmentone.MapTwoFragment;
 
-
-public class MapActivity extends BaseActivity{
+public class MapActivity extends BaseActivity {
     public LocationClient mLocationClient=null;
     public BDLocationListener myListener=new MyLocationListener();
     private  String longitude;
@@ -113,17 +113,13 @@ public class MapActivity extends BaseActivity{
         }
     }
     public void  getHotCityData(){
-
         String Url=UrlUtils.CITY;
         HttpHelper.getCity(Url, "4", new HttpCallBack<CityResultBean>() {
-
             @Override
             public void onSuccess(CityResultBean result) {
-                LogUtils.e("dasasdf:____________________"+result);
                 fre_mapone.setHotCityEntities(result.hotCitys);
                 fre_maptwo.setCityEntities(result.openCitys);
             }
-
             @Override
             public void onFail(String errMsg) {
 

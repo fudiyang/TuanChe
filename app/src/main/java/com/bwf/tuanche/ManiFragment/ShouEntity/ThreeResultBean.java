@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Cheng on 2016/8/17.
  * Description:
  */
-public class ThreeResultBean{
+public class ThreeResultBean extends BaseBean {
 
     public List<ThreeEntity> header_banner;
     public List<ThreeEntity1> center_banner;

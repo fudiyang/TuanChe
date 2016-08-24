@@ -11,12 +11,10 @@ import android.view.View;
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.utils.DividerItemDecoration;
 import com.bwf.framwork.utils.IntentUtils;
-import com.bwf.tuanche.MainActivity;
 import com.bwf.tuanche.ManiFragment.Adapter.GridViewAdapter4;
 import com.bwf.tuanche.ManiFragment.ShouEntity.FourEntity;
-import com.bwf.tuanche.MyApplication;
 import com.bwf.tuanche.R;
-import com.bwf.tuanche.detailsActivity;
+import com.bwf.tuanche.xaingqing.detailsActivity;
 
 import java.util.List;
 

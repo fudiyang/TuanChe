@@ -1,14 +1,15 @@
 package com.bwf.framwork.http;
 
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.utils.StringUtils;
+import com.umeng.socialize.utils.Log;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.ParameterizedType;
+import java.text.Format;
 
 import okhttp3.Call;
 
@@ -17,6 +18,7 @@ import okhttp3.Call;
  * Description: http回调
  */
 public abstract class HttpCallBack<T> extends StringCallback {
+
 
     private Class<T> tClass;
 
@@ -52,10 +54,8 @@ public abstract class HttpCallBack<T> extends StringCallback {
                     onFail(baseBean.msg);
                 }
             } catch (JSONException e) {
-
                     onFail("解析异常");
                 }
-
         } else
             onFail("服务器返回内容为空");
 
