@@ -1,4 +1,5 @@
 package com.bwf.tuanche;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.DrawableUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.ToastUtil;
@@ -51,6 +53,7 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
     private Button button_update,text_intentsearch;
     private View view;
     private PopupWindow popupWindow;
+
 
     @Override
     public int getContentViewId() {
@@ -112,7 +115,7 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
         HttpHelper.getUpdate(url, new HttpCallBack<UpdateResultBean>() {
             @Override
             public void onSuccess(UpdateResultBean result) {
-                LogUtils.e("------------------",result.versionCode+"----"+result.versionName);
+                LogUtils.e("------------------", result.versionCode + "----" + result.versionName);
                 if(oldVersionCode<result.versionCode){
                     if(result != null){
                         description=result.description;
