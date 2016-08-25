@@ -74,13 +74,11 @@ public class MapOneFragment extends BaseFragment implements MapAdapterOne.MapCal
 
     @Override
     public void OnItemClick(int position) {
-        Toast.makeText(getActivity(),hotCityEntities.get(position).name,Toast.LENGTH_SHORT).show();
         Bundle bundle = new Bundle();
         bundle.putString("cityId",hotCityEntities.get(position).id);
         MyApplication.getMyApplication().setCityName(hotCityEntities.get(position).name);
         IntentUtils.openActivity(getActivity(), MainActivity.class,bundle);
         getActivity().finish();
-
     }
 
     public void setCurrentCityName(String currentCityName) {

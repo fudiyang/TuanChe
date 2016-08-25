@@ -1,6 +1,7 @@
 package com.bwf.tuanche;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,8 +44,8 @@ public class MapActivity extends BaseActivity {
     @Override
     public void beforeInitView() {
         currentCity = getIntent().getStringExtra("cityName");
-        currentCity = currentCity==null?"成都":currentCity;
         LogUtils.e("msg","beforeInitView"+currentCity);
+
     }
 
     @Override
@@ -124,7 +125,6 @@ public class MapActivity extends BaseActivity {
             @Override
             public void onSuccess(CityResultBean result) {
 //                LogUtils.e("dasasdf:____________________"+result);
-
                 fre_mapone.setHotCityEntities(result.hotCitys);
                 fre_maptwo.setCityEntities(result.openCitys);
             }
@@ -134,7 +134,6 @@ public class MapActivity extends BaseActivity {
             }
         });
     }
-            private  boolean first=true;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -143,7 +142,6 @@ public class MapActivity extends BaseActivity {
                 bundle.putString("cityId",cityId);
                 MyApplication.getMyApplication().setCityName(city.toUpperCase().trim().substring(0,2));
                 IntentUtils.openActivity(MapActivity.this,MainActivity.class,bundle);
-                this.finish();
                 break;
             case R.id.img_back:
                MapActivity.this.finish();
@@ -151,4 +149,5 @@ public class MapActivity extends BaseActivity {
         }
 
     }
+
 }
