@@ -50,5 +50,12 @@ public class HttpHelper {
                 .build()
                 .execute(callBack);
     }
-
+    //城市
+    public static void getcity(String url,String pageSize,HttpCallBack callBack){
+       OkHttpUtils.post()
+               .url(url)
+               .addParams("pageSize",pageSize)
+               .build()
+               .execute(callBack);
+    }
 }

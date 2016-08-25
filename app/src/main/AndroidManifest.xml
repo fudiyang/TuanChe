@@ -54,7 +54,8 @@
             android:value="57aac750e0f55a6e6c000ece" />
 
         <activity android:name=".detailsActivity" />
-        <activity android:name=".HunyinActivity"></activity>
+        <activity android:name=".HunyinActivity" />
+        <activity android:name=".CityActivity"></activity>
     </application>
 
 </manifest>

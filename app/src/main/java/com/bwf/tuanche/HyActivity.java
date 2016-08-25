@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.bwf.framwork.base.BaseActivity;
 
 public class HyActivity extends BaseActivity {
-  private Button btn_1,btn_2;
+  private Button btn_1,btn_2,btn_3;
 
     @Override
     public int getContentViewId() {
@@ -25,8 +25,10 @@ public class HyActivity extends BaseActivity {
     public void initView() {
         btn_1=findViewByIdNoCast(R.id.btn_1);
         btn_2=findViewByIdNoCast(R.id.btn_2);
+        btn_3=findViewByIdNoCast(R.id.btn_3);
         btn_1.setOnClickListener(this);
         btn_2.setOnClickListener(this);
+        btn_3.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +46,10 @@ public class HyActivity extends BaseActivity {
            case R.id.btn_2:
                Intent intent2=new Intent(HyActivity.this,HunyinActivity.class);
                startActivity(intent2);
+               break;
+           case R.id.btn_3:
+               Intent intent3=new Intent(HyActivity.this,CityActivity.class);
+               startActivity(intent3);
                break;
 
        }

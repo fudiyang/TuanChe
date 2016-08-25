@@ -5,10 +5,12 @@ import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.bwf.framwork.base.BaseActivity;
+import com.bwf.framwork.base.BaseBean;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.utils.UrlUtils;
 import com.bwf.tuanche.View.TuancheDetailTitleBar;
+import com.bwf.tuanche.entiy.frist.CityResultBean;
 import com.bwf.tuanche.entiy.qichexiangqing.Result;
 import com.bwf.tuanche.entiy.qichexiangqing.RootBean;
 import com.bwf.tuanche.fragment.Fragment_1;
@@ -94,6 +96,7 @@ public class detailsActivity extends BaseActivity {
     public void onClick(View view) {
 
     }
+
 
 
 }
