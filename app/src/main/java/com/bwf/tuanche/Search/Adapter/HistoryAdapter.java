@@ -28,7 +28,7 @@ public class HistoryAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return userBeens == null ? 0 : userBeens.size();
+        return userBeens.size()<=5 ? userBeens.size() : 5;
     }
 
     @Override

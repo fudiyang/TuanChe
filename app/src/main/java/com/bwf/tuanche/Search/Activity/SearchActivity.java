@@ -185,7 +185,8 @@ public class SearchActivity extends BaseActivity {
                 LogUtils.e("date",timer);
                 userBean.dateTime=timer;
                 LogUtils.e("ed输入的内容：",userBean.toString());
-                userModel.insertUser(userBean);
+//                userModel.insertUser(userBean);
+                userModel.updataUser(userBean);
                 userBeans=userModel.queryAllUsearBean();
                 Collections.sort(userBeans, compareUserBean);
                 historyAdapter.setUserBeens(userBeans);
@@ -265,6 +266,7 @@ public class SearchActivity extends BaseActivity {
                     userBean.dateTime=timer;
                     LogUtils.e("ed输入的内容：",userBean.toString());
                     userModel.insertUser(userBean);
+                    userModel.updataUser(userBean);
                     userBeans=userModel.queryAllUsearBean();
                     Collections.sort(userBeans, compareUserBean);
                     historyAdapter.setUserBeens(userBeans);

@@ -81,6 +81,15 @@ public class UserModel extends BaseModel {
         }
         return userBean;
     }
+    //更新数据
+    public void updataUser(UserBean userBean) {
+        if (userBean == null)
+            return;
+        ContentValues values = new ContentValues();
+        values.put("info", userBean.info);
+        values.put("dateTime", userBean.dateTime);
+        update(TABLE_NAME,values, "info=?", new String[]{userBean.info});
+    }
 
     @Override
     protected String getTableName() {
