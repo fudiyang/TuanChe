@@ -81,12 +81,10 @@ public class PageFragment extends BaseFragment {
         setOnClick(R.id.tv_title_city_name);
         String Url= UrlUtils.One_URL;
         HttpHelper.getFregmentOne(Url, cityId, new HttpCallBack<OneResultBean>() {
-
             @Override
             public void onSuccess(OneResultBean result) {
                 LogUtils.e("tag",""+result.nc);
                 fre_one.setOneResultBean(result);
-
             }
 
             @Override
@@ -104,7 +102,6 @@ public class PageFragment extends BaseFragment {
                     LogUtils.e("tag","TWO_URL:____________"+result.list);
                         fre_two.setList(result.list,cityId);
                 }
-
                 @Override
                 public void onFail(String errMsg) {
 
@@ -154,7 +151,8 @@ public class PageFragment extends BaseFragment {
             switch (view.getId()){
                 case R.id.tv_title_city_name:
                     Bundle bundle = new Bundle();
-                    bundle.putString("cityName",MyApplication.getMyApplication().getCityName());
+                    LogUtils.e("msg","cityName-->"+tv_title_city_name.getText().toString());
+                    bundle.putString("cityName",tv_title_city_name.getText().toString());
                     IntentUtils.openActivity(getContext(), MapActivity.class,bundle);
                     break;
                 case R.id.ed_seach:

@@ -1,8 +1,6 @@
 package com.bwf.tuanche.ManiFragment.fragmentone;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -11,8 +9,7 @@ import android.widget.TextView;
 import com.bwf.framwork.base.BaseFragment;
 import com.bwf.framwork.image.ImageLoader;
 import com.bwf.framwork.utils.IntentUtils;
-import com.bwf.framwork.utils.LogUtils;
-import com.bwf.tuanche.HunyinActivity;
+import com.bwf.tuanche.xaingqing.HunyinActivity;
 import com.bwf.tuanche.ManiFragment.ShouEntity.ThreeResultBean;
 import com.bwf.tuanche.R;
 import com.facebook.drawee.view.SimpleDraweeView;

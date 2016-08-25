@@ -1,8 +1,13 @@
 package com.bwf.framwork.http;
 
+
+import com.bwf.tuanche.xaingqing.entiy.remen.BrandIDBean;
+import com.zhy.http.okhttp.OkHttpUtils;
+
 import com.bwf.tuanche.VersionUpdate.UpdateResultBean;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
+
 
 /**
  * Created by Lizhangfeng on 2016/7/13 0013.
@@ -39,11 +44,12 @@ public class HttpHelper {
                 .execute(callBack);
     }
 //更多评价
-public static void getPJDetail(String url,String count,String offset,String cityId,String brandId,HttpCallBack callBack){
+
+    public static void getPJDetail(String url,String offset,String cityId,String brandId,HttpCallBack callBack){
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams("count",count)
+                .addParams("count","10")//
                 .addParams("offset",offset)
                 .addParams("cityId",cityId)
                 .addParams("brandId",brandId)
@@ -136,9 +142,22 @@ public static void getPJDetail(String url,String count,String offset,String city
                 .execute(callBack);
     }
     public static void  getCity(String url,String pageSize,HttpCallBack callBack){
-        OkHttpUtils.post().url(url)
+        OkHttpUtils.post()
+                .url(url)
                 .addParams("pageSize",pageSize)
                 .build()
                 .execute(callBack);
+    }
+
+    //根据车品牌获取车列表
+    public static void getRenMen(String url,String type,String cityId,String brandId,HttpArrayCallBack<BrandIDBean> callBack){
+        OkHttpUtils.post()
+                .url(url)
+                .addParams("type",type)
+                .addParams("cityId",cityId)
+                .addParams("brandId",brandId)
+                .build()
+                .execute(callBack);
+
     }
 }

@@ -116,11 +116,14 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
             @Override
             public void onSuccess(UpdateResultBean result) {
                 LogUtils.e("------------------", result.versionCode + "----" + result.versionName);
+                LogUtils.e("------------------",result.versionCode+"----"+result.versionName);
+                //版本判断
                 if(oldVersionCode<result.versionCode){
                     if(result != null){
                         description=result.description;
                         newVersionCode= String.valueOf(result.versionName);
                         initShow();
+                        popupWindow.dismiss();
                         show();
                     }
                 }
@@ -131,6 +134,7 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
             }
         });
     }
+    //显示popwindow
     private void initShow(){
         view=View.inflate(this,R.layout.updata,null);
         dialog_text= (TextView) view.findViewById(R.id.dialog_text);
@@ -150,6 +154,7 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
         });
 
     }
+    //popwindow的位置
     private void show() {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }

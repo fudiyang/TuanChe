@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.bwf.tuanche.PjActivity">
+    tools:context=".xaingqing.PjActivity">
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:textSize="15dp"
             />
     </LinearLayout>
-    <com.bwf.tuanche.View.RefreshListView
+    <com.bwf.tuanche.xaingqing.View.RefreshListView
         android:id="@+id/pj_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

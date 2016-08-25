@@ -1,5 +1,6 @@
 package com.bwf.framwork.http;
 
+
 import com.bwf.framwork.utils.StringUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.util.Log;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
+
 import java.lang.reflect.ParameterizedType;
 import okhttp3.Call;
 
@@ -16,6 +18,7 @@ import okhttp3.Call;
  * Description: http回调
  */
 public abstract class HttpCallBack<T> extends StringCallback {
+
 
     private Class<T> tClass;
 

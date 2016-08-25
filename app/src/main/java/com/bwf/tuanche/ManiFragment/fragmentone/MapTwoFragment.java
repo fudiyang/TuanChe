@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bwf.framwork.base.BaseFragment;
+import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.DividerItemDecoration;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.MainActivity;
@@ -30,7 +31,7 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
   private MapAdapterTwo mapAdapterTwo;
   private List<ListCityEntity> cityEntities;
   private DividerItemDecoration dividerItemDecoration1;
-
+  private  String currentCityName;
   public void setCityEntities(List<ListCityEntity> cityEntities) {
     this.cityEntities = cityEntities;
     mapAdapterTwo.setListCityEntities(cityEntities);
@@ -57,12 +58,11 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
 
     @Override
     protected void initData() {
-      mapAdapterTwo=new MapAdapterTwo(getContext());
+
       GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),1);
       rl_ListCity.addItemDecoration(dividerItemDecoration1);
       rl_ListCity.setLayoutManager(gridLayoutManager);
-      rl_ListCity.setAdapter(mapAdapterTwo);
-      mapAdapterTwo.setMapCallBackList(this);
+
 
     }
 
@@ -80,5 +80,12 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
     IntentUtils.openActivity(getActivity(), MainActivity.class,bundle);
     getActivity().finish();
 
+  }
+
+  public void setCurrentCityName(String currentCityName) {
+    this.currentCityName = currentCityName;
+    mapAdapterTwo=new MapAdapterTwo(getContext(),currentCityName);
+    rl_ListCity.setAdapter(mapAdapterTwo);
+    mapAdapterTwo.setMapCallBackList(this);
   }
 }

@@ -18,7 +18,7 @@ import com.bwf.tuanche.R;
 import com.bwf.tuanche.Search.Activity.SearchActivity;
 import com.bwf.tuanche.Search.entity.ed_search.EdSecondResult;
 import com.bwf.tuanche.Search.entity.ed_search.EdThridBean;
-import com.bwf.tuanche.detailsActivity;
+import com.bwf.tuanche.xaingqing.detailsActivity;
 
 import java.util.List;
 

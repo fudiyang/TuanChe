@@ -57,12 +57,12 @@
         </activity>
         <activity android:name=".Search.Activity.SearchActivity"/>
 
+        <activity android:name=".xaingqing.PjActivity" />
+
         <activity android:name=".Detail.DetailActivity"/>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".PjActivity" />
-
         <!-- QQ\QQZone -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
@@ -84,8 +84,8 @@
             android:name="UMENG_APPKEY"
             android:value="57aac750e0f55a6e6c000ece" />
 
-        <activity android:name=".detailsActivity" />
-        <activity android:name=".HunyinActivity"></activity>
+        <activity android:name=".xaingqing.detailsActivity" />
+        <activity android:name=".xaingqing.HunyinActivity"></activity>
         <activity android:name=".MainActivity" />
         <!-- 百度定位SDK -->
         <service

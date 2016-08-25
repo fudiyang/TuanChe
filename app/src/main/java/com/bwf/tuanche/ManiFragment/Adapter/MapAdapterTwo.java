@@ -21,13 +21,14 @@ public class MapAdapterTwo extends RecyclerView.Adapter<MapAdapterTwo.ListCityVi
 
     private List<ListCityEntity> listCityEntities;
     private  MapCallBackList mapCallBackList;
-
+    private String currentCityName;
     public void setMapCallBackList(MapCallBackList mapCallBackList) {
         this.mapCallBackList = mapCallBackList;
     }
 
-    public MapAdapterTwo(Context context) {
+    public MapAdapterTwo(Context context, String currentCityName) {
         this.context = context;
+        this.currentCityName = currentCityName;
     }
 
     public void setListCityEntities(List<ListCityEntity> listCityEntities) {
@@ -53,7 +54,12 @@ public class MapAdapterTwo extends RecyclerView.Adapter<MapAdapterTwo.ListCityVi
                 holder.tv_zimu.setVisibility(View.GONE);
             }else
             holder.tv_zimu.setText(newpinyin);
-            holder.tv_chengshi.setText(listCityEntities.get(position).name);
+           String name = listCityEntities.get(position).name;
+          if(currentCityName!=null){
+              if (currentCityName.equals(name))holder.tv_chengshi.setTextColor(Color.RED);
+              else  holder.tv_chengshi.setTextColor(Color.BLACK);
+          }
+            holder.tv_chengshi.setText(name);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

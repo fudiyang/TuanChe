@@ -35,8 +35,6 @@ import com.bwf.tuanche.Search.Adapter.SearchAdapter;
 import com.bwf.tuanche.Search.entity.SearchResultBean;
 import com.bwf.tuanche.Search.entity.ed_search.EdSecondResult;
 import com.bwf.tuanche.Search.entity.ed_search.EdThridBean;
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -265,8 +263,17 @@ public class SearchActivity extends BaseActivity {
                     LogUtils.e("date",timer);
                     userBean.dateTime=timer;
                     LogUtils.e("ed输入的内容：",userBean.toString());
+                    for(int i=0;i<userBeans.size();i++){
+                        if(userBeans.get(i).info.equals(userBean.info)){// 循环userbeans中的info 与ED的info比较
+                            userModel.updataUser(userBean);
+                            userBeans=userModel.queryAllUsearBean();
+                            Collections.sort(userBeans, compareUserBean);
+                            historyAdapter.setUserBeens(userBeans);
+                            search_history.setAdapter(historyAdapter);
+                            return;
+                        }
+                    }
                     userModel.insertUser(userBean);
-                    userModel.updataUser(userBean);
                     userBeans=userModel.queryAllUsearBean();
                     Collections.sort(userBeans, compareUserBean);
                     historyAdapter.setUserBeens(userBeans);

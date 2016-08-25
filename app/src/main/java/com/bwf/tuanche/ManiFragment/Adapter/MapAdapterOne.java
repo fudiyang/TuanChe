@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.bwf.tuanche.ManiFragment.ShouEntity.HotCityEntity;
+import com.bwf.tuanche.MyApplication;
 import com.bwf.tuanche.R;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 public class MapAdapterOne extends RecyclerView.Adapter<MapAdapterOne.CityViewHodler>{
     private Context context;
     private MapCallBack mapCallBack;
-
+    private  String currentCityName;
     public void setMapCallBack(MapCallBack mapCallBack) {
         this.mapCallBack = mapCallBack;
     }
@@ -29,8 +30,9 @@ public class MapAdapterOne extends RecyclerView.Adapter<MapAdapterOne.CityViewHo
         this.hotCityEntities = hotCityEntities;
     }
 
-    public MapAdapterOne(Context context) {
+    public MapAdapterOne(Context context, String currentCityName) {
         this.context = context;
+        this.currentCityName =currentCityName ;
     }
 
     @Override
@@ -43,6 +45,11 @@ public class MapAdapterOne extends RecyclerView.Adapter<MapAdapterOne.CityViewHo
 
     @Override
     public void onBindViewHolder(final CityViewHodler holder, final int position) {
+            if(currentCityName!=null){
+                if (currentCityName.equals(hotCityEntities.get(position).name))
+                    holder.tv_hotCity.setTextColor(Color.RED);
+                else holder.tv_hotCity.setTextColor(Color.BLACK);
+            }
             holder.tv_hotCity.setText(hotCityEntities.get(position).name);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
