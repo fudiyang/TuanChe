@@ -113,7 +113,6 @@ public class HttpHelper {
                 .addParams("isBuy",isBuy)
                 .build()
                 .execute(callBack);
-
     }
     //婚姻保驾
     public static void  getFregmentThree(String url,String cityId,HttpCallBack callBack){
@@ -132,7 +131,6 @@ public class HttpHelper {
                 .addParams("offset",offset)
                 .build()
                 .execute(callBack);
-
     }
     public static void  getMap(String url,String longitude,String latitude,HttpCallBack callBack){
         OkHttpUtils.post().url(url)
@@ -148,7 +146,6 @@ public class HttpHelper {
                 .build()
                 .execute(callBack);
     }
-
     //根据车品牌获取车列表
     public static void getRenMen(String url,String type,String cityId,String brandId,HttpArrayCallBack<BrandIDBean> callBack){
         OkHttpUtils.post()
@@ -158,6 +155,5 @@ public class HttpHelper {
                 .addParams("brandId",brandId)
                 .build()
                 .execute(callBack);
-
     }
 }
