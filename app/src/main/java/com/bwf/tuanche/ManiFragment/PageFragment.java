@@ -1,6 +1,7 @@
 package com.bwf.tuanche.ManiFragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -11,9 +12,11 @@ import com.bwf.framwork.http.HttpArrayCallBack;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.image.ImageLoader;
+import com.bwf.framwork.tools.AppManager;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.UrlUtils;
+import com.bwf.tuanche.MainActivity;
 import com.bwf.tuanche.ManiFragment.ShouEntity.FourEntity;
 import com.bwf.tuanche.ManiFragment.ShouEntity.OneResultBean;
 import com.bwf.tuanche.ManiFragment.ShouEntity.ThreeResultBean;
@@ -43,6 +46,7 @@ public class PageFragment extends BaseFragment {
 
     public void setCityId(String cityId) {
         this.cityId = cityId;
+//        initData();
     }
 
     @Override
@@ -67,18 +71,23 @@ public class PageFragment extends BaseFragment {
         fre_two= (TwoFragment) getChildFragmentManager().findFragmentById(R.id.fre_two);
         fre_three= (ThreeFragment) getChildFragmentManager().findFragmentById(R.id.fre_three);
         fre_four= (FourFragment) getChildFragmentManager().findFragmentById(R.id.fre_four);
+        setOnClick(R.id.ed_seach);
+        setOnClick(R.id.tv_title_city_name);
     }
 
     @Override
     protected void initData() {
-        setOnClick(R.id.ed_seach);
-                getData();
-                getPinpaiData();
-                getBaoxianData();
-                getChexingData();
+        LogUtils.i("   cityId:     "+cityId);
+        if(cityId != null) {
+            getData();
+            getPinpaiData();
+            getBaoxianData();
+            getChexingData();
+        }
+
     }
     public void getData(){
-        setOnClick(R.id.tv_title_city_name);
+
         String Url= UrlUtils.One_URL;
         HttpHelper.getFregmentOne(Url, cityId, new HttpCallBack<OneResultBean>() {
             @Override
@@ -118,6 +127,7 @@ public class PageFragment extends BaseFragment {
                 if (result!=null)
                     ImageLoader.getInstance().disPlayImage(img_pei,result.header_banner.get(0).adImgUrl);
                 fre_three.setThreeResultBean(result,cityId);
+
             }
             @Override
             public void onFail(String errMsg) {
@@ -153,7 +163,10 @@ public class PageFragment extends BaseFragment {
                     Bundle bundle = new Bundle();
                     LogUtils.e("msg","cityName-->"+tv_title_city_name.getText().toString());
                     bundle.putString("cityName",tv_title_city_name.getText().toString());
-                    IntentUtils.openActivity(getContext(), MapActivity.class,bundle);
+//                    Intent intent = new Intent(getContext(),MapActivity.class);
+//                    intent.putExtra("cityName",tv_title_city_name.getText().toString());
+//                    startActivityForResult(intent,1);
+                    IntentUtils.openActivity(getContext(),MapActivity.class,bundle);
                     break;
                 case R.id.ed_seach:
                     Bundle bundle1 = new Bundle();

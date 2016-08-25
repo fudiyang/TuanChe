@@ -55,7 +55,7 @@ public class GuidFragmentActivity extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.first:
-                SharePrefreceHelper.getInstence(getActivity()).setIsFirst(false);
+//                SharePrefreceHelper.getInstence(getActivity()).setIsFirst(false);
                 first.setBackgroundResource(R.mipmap.start_btn_click);
                 first.setImageResource(R.mipmap.start_btn_click);
                 IntentUtils.openActivity(getContext(), MapActivity.class);

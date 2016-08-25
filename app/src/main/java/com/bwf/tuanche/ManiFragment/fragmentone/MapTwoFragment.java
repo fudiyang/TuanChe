@@ -73,7 +73,6 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
 
   @Override
   public void OnItemListClick(int position) {
-    Toast.makeText(getActivity(),cityEntities.get(position).name,Toast.LENGTH_SHORT).show();
     Bundle bundle = new Bundle();
     bundle.putString("cityId",cityEntities.get(position).id);
     MyApplication.getMyApplication().setCityName(cityEntities.get(position).name);
@@ -85,7 +84,7 @@ public class MapTwoFragment extends BaseFragment implements MapAdapterTwo.MapCal
   public void setCurrentCityName(String currentCityName) {
     this.currentCityName = currentCityName;
     mapAdapterTwo=new MapAdapterTwo(getContext(),currentCityName);
-    rl_ListCity.setAdapter(mapAdapterTwo);
     mapAdapterTwo.setMapCallBackList(this);
+    rl_ListCity.setAdapter(mapAdapterTwo);
   }
 }

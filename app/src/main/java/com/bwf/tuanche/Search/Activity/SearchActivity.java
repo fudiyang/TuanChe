@@ -202,7 +202,6 @@ public class SearchActivity extends BaseActivity {
                 LogUtils.e("1111", resultBean.result.toString());
                 for (int i = 0; i < resultBean.result.length; i++) {
                     lists.add(resultBean.result[i].toString());// 数组遍历add进lists
-
                     LogUtils.e("2222", lists.toString());
                 }
                 searchAdapter.setResult(lists);
