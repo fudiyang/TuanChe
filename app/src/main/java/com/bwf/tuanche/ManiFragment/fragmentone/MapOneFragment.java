@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bwf.framwork.base.BaseFragment;
+import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.DividerItemDecoration;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.tuanche.MainActivity;
@@ -28,8 +29,10 @@ public class MapOneFragment extends BaseFragment implements MapAdapterOne.MapCal
     private DividerItemDecoration dividerItemDecoration;
     private DividerItemDecoration dividerItemDecoration1;
     private String cityId;
+    private String currentCityName;
 
-    public void setHotCityEntities(List<HotCityEntity> hotCityEntities) {
+    public void
+    setHotCityEntities(List<HotCityEntity> hotCityEntities) {
         this.hotCityEntities = hotCityEntities;
        mapAdapterOne.setHotCityEntities(hotCityEntities);
         mapAdapterOne.notifyDataSetChanged();
@@ -56,13 +59,11 @@ public class MapOneFragment extends BaseFragment implements MapAdapterOne.MapCal
 
     @Override
     protected void initData() {
-        mapAdapterOne=new MapAdapterOne(getContext());
-        mapAdapterOne.setMapCallBack(this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),4);
         rl_hotCity.addItemDecoration(dividerItemDecoration);
         rl_hotCity.addItemDecoration(dividerItemDecoration1);
         rl_hotCity.setLayoutManager(gridLayoutManager);
-        rl_hotCity.setAdapter(mapAdapterOne);
+
 
     }
 
@@ -80,5 +81,12 @@ public class MapOneFragment extends BaseFragment implements MapAdapterOne.MapCal
         IntentUtils.openActivity(getActivity(), MainActivity.class,bundle);
         getActivity().finish();
 
+    }
+
+    public void setCurrentCityName(String currentCityName) {
+        this.currentCityName = currentCityName;
+        mapAdapterOne=new MapAdapterOne(getContext(),currentCityName);
+        mapAdapterOne.setMapCallBack(this);
+        rl_hotCity.setAdapter(mapAdapterOne);
     }
 }

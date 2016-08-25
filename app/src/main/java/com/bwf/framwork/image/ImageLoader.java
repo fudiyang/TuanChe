@@ -21,7 +21,7 @@ public class ImageLoader {
 
     private static  ImageLoader imageLoader;
 
-    private ImageLoader() {
+    public ImageLoader() {
     }
 
     public static ImageLoader getInstance(){

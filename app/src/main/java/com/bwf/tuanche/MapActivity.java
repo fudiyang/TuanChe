@@ -1,5 +1,6 @@
 package com.bwf.tuanche;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.baidu.location.LocationClientOption;
 import com.bwf.framwork.base.BaseActivity;
 import com.bwf.framwork.http.HttpCallBack;
 import com.bwf.framwork.http.HttpHelper;
+import com.bwf.framwork.share.SharePrefreceHelper;
 import com.bwf.framwork.utils.IntentUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.UrlUtils;
@@ -21,8 +23,7 @@ import com.bwf.tuanche.ManiFragment.ShouEntity.MapEntity;
 import com.bwf.tuanche.ManiFragment.fragmentone.MapOneFragment;
 import com.bwf.tuanche.ManiFragment.fragmentone.MapTwoFragment;
 
-
-public class MapActivity extends BaseActivity{
+public class MapActivity extends BaseActivity {
     public LocationClient mLocationClient=null;
     public BDLocationListener myListener=new MyLocationListener();
     private  String longitude;
@@ -33,7 +34,7 @@ public class MapActivity extends BaseActivity{
     private MapOneFragment fre_mapone;
     private MapTwoFragment fre_maptwo;
     private String cityId;
-
+    private String currentCity;
     @Override
     public int getContentViewId() {
         return R.layout.activity_map;
@@ -41,7 +42,9 @@ public class MapActivity extends BaseActivity{
 
     @Override
     public void beforeInitView() {
-
+        currentCity = getIntent().getStringExtra("cityName");
+        currentCity = currentCity==null?"成都":currentCity;
+        LogUtils.e("msg","beforeInitView"+currentCity);
     }
 
     @Override
@@ -51,6 +54,8 @@ public class MapActivity extends BaseActivity{
         img_back= (ImageView) findViewById(R.id.img_back);
         fre_mapone= (MapOneFragment) getSupportFragmentManager().findFragmentById(R.id.fre_mapone);
         fre_maptwo= (MapTwoFragment) getSupportFragmentManager().findFragmentById(R.id.fre_maptwo);
+        fre_mapone.setCurrentCityName(currentCity);
+        fre_maptwo.setCurrentCityName(currentCity);
     }
 
     @Override
@@ -63,6 +68,7 @@ public class MapActivity extends BaseActivity{
         initLocation();
         mLocationClient.start();
         getHotCityData();
+        tv_city.setText("当前城市—"+currentCity);
     }
     private void initLocation(){
         LocationClientOption option = new LocationClientOption();
@@ -101,7 +107,7 @@ public class MapActivity extends BaseActivity{
 
                 @Override
                 public void onSuccess(MapEntity result) {
-                    LogUtils.e("rdasdas:______________________"+result);
+//                   LogUtils.e("rdasdas:______________________"+result);
                     if(result==null) return;
                     tv_dingwei.setText(result.name);
                     cityId=result.id;
@@ -113,24 +119,22 @@ public class MapActivity extends BaseActivity{
         }
     }
     public void  getHotCityData(){
-
         String Url=UrlUtils.CITY;
         HttpHelper.getCity(Url, "4", new HttpCallBack<CityResultBean>() {
-
             @Override
             public void onSuccess(CityResultBean result) {
-                LogUtils.e("dasasdf:____________________"+result);
+//                LogUtils.e("dasasdf:____________________"+result);
+
                 fre_mapone.setHotCityEntities(result.hotCitys);
                 fre_maptwo.setCityEntities(result.openCitys);
             }
-
             @Override
             public void onFail(String errMsg) {
 
             }
         });
     }
-
+            private  boolean first=true;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -142,8 +146,7 @@ public class MapActivity extends BaseActivity{
                 this.finish();
                 break;
             case R.id.img_back:
-                IntentUtils.openActivity(MapActivity.this,MainActivity.class);
-                this.finish();
+               MapActivity.this.finish();
                 break;
         }
 

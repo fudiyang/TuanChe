@@ -1,21 +1,31 @@
 package com.bwf.tuanche;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.bwf.framwork.base.BaseActivity;
+import com.bwf.framwork.http.HttpCallBack;
+import com.bwf.framwork.http.HttpHelper;
 import com.bwf.framwork.utils.DrawableUtils;
 import com.bwf.framwork.utils.LogUtils;
 import com.bwf.framwork.utils.ToastUtil;
+import com.bwf.framwork.utils.UrlUtils;
 import com.bwf.tuanche.ManiFragment.MianFragment;
 import com.bwf.tuanche.ManiFragment.OrderFragment;
 import com.bwf.tuanche.ManiFragment.PageFragment;
 import com.bwf.tuanche.ManiFragment.ServiceFragment;
+import com.bwf.tuanche.VersionUpdate.UpdateResultBean;
 
 
 public class MainActivity extends BaseActivity implements Handler.Callback{
@@ -33,7 +43,14 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
     private FragmentManager fragmentManager;
     private String cityId,cityName;
     private Handler handler;
-
+    private int oldVersionCode;
+    private String oldVersionName;
+    private String description,newVersionCode;
+    private TextView dialog_text,text_version;
+    private ImageView image_close;
+    private Button button_update,text_intentsearch;
+    private View view;
+    private PopupWindow popupWindow;
     @Override
     public int getContentViewId() {
         return R.layout.activity_main;
@@ -42,42 +59,99 @@ public class MainActivity extends BaseActivity implements Handler.Callback{
     @Override
     public void beforeInitView() {
         handler=new Handler(this);
-      //  cityId=getIntent().getStringExtra("cityId");
         cityId=cityId==null?"156":cityId;
-        LogUtils.e("_________________________________"+cityName);
     }
-
     @Override
     public void initView() {
-        tv_page=findViewByIdNoCast(R.id.tv_page);
-        tv_order=findViewByIdNoCast(R.id.tv_order);
-        tv_service=findViewByIdNoCast(R.id.tv_service);
-        tv_main=findViewByIdNoCast(R.id.tv_main);
-        img_cheap=findViewByIdNoCast(R.id.img_cheap);
+        PackageManager manager;
+        PackageInfo info = null;
+        manager = this.getPackageManager();
+        try {
+            info = manager.getPackageInfo(this.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        oldVersionCode= info.versionCode;
+        oldVersionName=info.versionName;
+        LogUtils.e("======================",oldVersionCode+"------"+oldVersionName);
+
+        //fragment管理
+        tv_page = findViewByIdNoCast(R.id.tv_page);
+        tv_order = findViewByIdNoCast(R.id.tv_order);
+        tv_service = findViewByIdNoCast(R.id.tv_service);
+        tv_main = findViewByIdNoCast(R.id.tv_main);
+        img_cheap = findViewByIdNoCast(R.id.img_cheap);
         //fragment 加载
-        pageFragment=new PageFragment();
+        pageFragment = new PageFragment();
         pageFragment.setCityId(cityId);
-        orderFragment=new OrderFragment();
-        serviceFragment=new ServiceFragment();
-        mianFragment=new MianFragment();
+        orderFragment = new OrderFragment();
+        serviceFragment = new ServiceFragment();
+        mianFragment = new MianFragment();
         fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft=  fragmentManager.beginTransaction();
-        ft.add(R.id.fre_content,pageFragment);
-        ft.add(R.id.fre_content,orderFragment);
-        ft.add(R.id.fre_content,serviceFragment);
-        ft.add(R.id.fre_content,mianFragment);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.fre_content, pageFragment);
+        ft.add(R.id.fre_content, orderFragment);
+        ft.add(R.id.fre_content, serviceFragment);
+        ft.add(R.id.fre_content, mianFragment);
         ft.hide(orderFragment);
         ft.hide(serviceFragment);
         ft.hide(mianFragment);
         ft.commit();
-    }
 
+    }
     @Override
     public void initData() {
         textViews = new TextView[]{tv_page,tv_order,tv_service,tv_main};
         setOnClick(tv_page,tv_order,tv_service,tv_main);
         setOnClick(img_cheap);
+        getdata();
+    }
+    public void getdata(){
+        String url= UrlUtils.VERSION_UPDATA;
+        HttpHelper.getUpdate(url, new HttpCallBack<UpdateResultBean>() {
+            @Override
+            public void onSuccess(UpdateResultBean result) {
+                LogUtils.e("------------------",result.versionCode+"----"+result.versionName);
+                //版本判断
+                if(oldVersionCode<result.versionCode){
+                    if(result != null){
+                        description=result.description;
+                        newVersionCode= String.valueOf(result.versionName);
+                        initShow();
+                        popupWindow.dismiss();
+                        show();
+                    }
+                }
+            }
+            @Override
+            public void onFail(String errMsg) {
+                LogUtils.e("123123",errMsg);
+            }
+        });
+    }
+    //显示popwindow
+    private void initShow(){
+        view=View.inflate(this,R.layout.updata,null);
+        dialog_text= (TextView) view.findViewById(R.id.dialog_text);
+        button_update= (Button) view.findViewById(R.id.button_update);
+        image_close= (ImageView) view.findViewById(R.id.image_close);
+        text_version= (TextView) view.findViewById(R.id.text_version);
+        dialog_text.setText(description);
+        text_version.setText("V"+newVersionCode);
+        LogUtils.e("dialog的文字","description"+description);
+        popupWindow =new PopupWindow(view, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        image_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                image_close.setImageResource(R.mipmap.icon_close_click);
+                popupWindow.dismiss();
+            }
+        });
 
+    }
+    //popwindow的位置
+    private void show() {
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }
 
     @Override

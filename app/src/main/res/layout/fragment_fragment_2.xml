@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="com.bwf.tuanche.fragment.Fragment_2">
+    tools:context=".xaingqing.fragment.Fragment_2">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -75,7 +75,13 @@
             android:textSize="20dp"
             />
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/edi_pop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="迈腾"
+        android:textSize="20dp"
+        />
     <EditText
         android:id="@+id/edi_phone"
         android:layout_width="match_parent"
@@ -88,23 +94,5 @@
         android:layout_height="wrap_content"
         android:hint="请输入姓名"
         />
-     <Button
-         android:id="@+id/btn_baoming"
-         android:layout_width="match_parent"
-         android:layout_height="50dp"
-         android:background="#FF0000"
-         android:layout_margin="10dp"
-         android:text="团购报名"
-         android:textColor="#ffffff"
-         android:textSize="15dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*您的信息仅供团车网团购报名使用，请放心报名"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginTop="15dp"
         />
 </LinearLayout>

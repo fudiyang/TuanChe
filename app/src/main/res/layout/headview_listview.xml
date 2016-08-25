@@ -11,8 +11,9 @@
         android:visibility="gone"/>
     <ImageView
         android:id="@+id/img_arrow"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/loading_progressbar"
          />
 
     <TextView

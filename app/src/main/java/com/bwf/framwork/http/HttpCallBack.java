@@ -1,15 +1,16 @@
 package com.bwf.framwork.http;
 
+
+import com.bwf.framwork.utils.StringUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.bwf.framwork.base.BaseBean;
-import com.bwf.framwork.utils.StringUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.lang.reflect.ParameterizedType;
-
 import okhttp3.Call;
 
 /**
@@ -17,6 +18,7 @@ import okhttp3.Call;
  * Description: http回调
  */
 public abstract class HttpCallBack<T> extends StringCallback {
+
 
     private Class<T> tClass;
 
@@ -32,7 +34,9 @@ public abstract class HttpCallBack<T> extends StringCallback {
 
     @Override
     public void onResponse(String response, int id) {
+        if (!TextUtils.isEmpty(response)) {
 
+            Log.e("tag","服务器返回结果: " + response);
         if (StringUtils.isNotEmpty(response)) {
 
             Log.e("result","服务器返回结果: " + response);
@@ -43,6 +47,7 @@ public abstract class HttpCallBack<T> extends StringCallback {
 
                 if ("10000".equals(baseBean.code)) {
 
+                    if (!TextUtils.isEmpty(baseBean.result))
                     if (StringUtils.isNotEmpty(baseBean.result))
                         onSuccess(JSON.parseObject(baseBean.result, tClass));
                     else
@@ -52,10 +57,11 @@ public abstract class HttpCallBack<T> extends StringCallback {
                     onFail(baseBean.msg);
                 }
             } catch (JSONException e) {
+                onFail("解析异常");
+            }
 
                     onFail("解析异常");
                 }
-
         } else
             onFail("服务器返回内容为空");
 

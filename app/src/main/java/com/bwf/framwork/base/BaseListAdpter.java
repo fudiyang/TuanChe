@@ -4,6 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
+
+import com.bwf.framwork.utils.LogUtils;
+import com.bwf.framwork.utils.ToastUtil;
 
 import java.util.List;
 
@@ -31,6 +35,7 @@ public abstract class BaseListAdpter<T, VH extends BaseListAdpter.ViewHolder> ex
     public void settList(List<T> tList) {
         this.tList = tList;
     }
+
 
     @Override
     public int getCount() {

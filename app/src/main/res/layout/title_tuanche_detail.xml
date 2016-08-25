@@ -10,19 +10,32 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:drawableLeft="@mipmap/icon_back"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="奥迪"
-        android:textSize="20dp"
-        android:drawableRight="@mipmap/icon_top_add_arrow"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text=""
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_city111"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text=""
+            android:textSize="20dp" android:drawableRight="@mipmap/icon_top_add_arrow"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_titleimg_fenxiang"
@@ -33,5 +46,4 @@
         android:layout_gravity="center_vertical"
         android:layout_marginRight="10dp"
         />
-
 </LinearLayout>

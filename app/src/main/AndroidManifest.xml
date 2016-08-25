@@ -39,13 +39,14 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
 
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MapActivity"/>
         <activity android:name=".welcome.WelcomeActivity">
             <intent-filter>
@@ -54,8 +55,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PjActivity" />
+        <activity android:name=".Search.Activity.SearchActivity"/>
 
+        <activity android:name=".xaingqing.PjActivity" />
+
+        <activity android:name=".Detail.DetailActivity"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <!-- QQ\QQZone -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
@@ -77,8 +84,8 @@
             android:name="UMENG_APPKEY"
             android:value="57aac750e0f55a6e6c000ece" />
 
-        <activity android:name=".detailsActivity" />
-        <activity android:name=".HunyinActivity"></activity>
+        <activity android:name=".xaingqing.detailsActivity" />
+        <activity android:name=".xaingqing.HunyinActivity"></activity>
         <activity android:name=".MainActivity" />
         <!-- 百度定位SDK -->
         <service
